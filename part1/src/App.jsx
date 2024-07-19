@@ -3,30 +3,29 @@ import Display from './components/Display'
 import Button from './components/Button'
 
 const App = () => {
-  const [counter, setCounter] = useState(0);
-  console.log('rendering with counter value', counter)
+  const [left, setLeft] = useState(0)
+  const [right, setRight] = useState(0)
 
-  const increaseByOne = () => {
-    console.log('increasing, value before', counter)
-    setCounter(counter + 1);
-  };
-  const decreaseByOne = () => {
-    console.log('decreasing, value before', counter)
-    setCounter(counter - 1);
-  }
-  const setToZero = () => {
-    console.log('resetting to zero, value before', counter)
-    setCounter(0);
+  const [allClicks, setAll] = useState([])
+
+  const handleLeftClick = () => {
+    setAll(allClicks.concat('L'))
+    setLeft(left + 1)
   }
 
+  const handleRightClick = () => {
+    setRight(right + 1)
+    setAll(allClicks.concat('R'))
+  }
   return (
     <div>
-      <Display counter={counter} />
-      <Button onClick={increaseByOne} text="Increase by one" />
-      <Button onClick={decreaseByOne} text="Decrease by one" />
-      <Button onClick={setToZero} text="Set to zero" />
+      {left}
+      <button onClick={handleLeftClick}>left</button>
+      <button onClick={handleRightClick}>right</button>
+      {right}
+      <p>{allClicks.join(', ')}</p>
     </div>
-  );
-};
+  )
+}
 
 export default App;
