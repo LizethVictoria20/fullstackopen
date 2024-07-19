@@ -1,13 +1,13 @@
-import Part from './Part';
+import Part from "./Part";
 
-function Content( props ) {
+function Content({ parts }) {
   return (
-    <>        
-      <Part part={props.part1} exercises={props.exercises1}/>
-      <Part part={props.part2} exercises={props.exercises2}/>
-      <Part part={props.part3} exercises={props.exercises3}/>
+    <>
+      {parts.map((part, index) => (
+        <Part key={index} part={part.name} exercises={part.exercises} />
+      ))}
     </>
-  )
+  );
 }
 
-export default Content
+export default Content;
