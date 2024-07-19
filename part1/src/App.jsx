@@ -24,9 +24,19 @@ const Statistics = ({ good, neutral, bad, total}) => {
 
 }
 
+const GeneralInformation = ({goodReview, neutralReview, badReview}) => {
+  return (
+    <div>
+      <h1>Give a feedback</h1>
+          <Button onClick={goodReview} text="Good"/>
+          <Button onClick={neutralReview} text="Neutral"/>
+          <Button onClick={badReview} text="Bad"/>
+          <h2>Statistics</h2>
+    </div>
+  )
+}
 
 const App = () => {
-  // guarda los clics de cada botón en su propio estado
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
@@ -52,23 +62,27 @@ const App = () => {
     const totalReviews = total + 1 
     setTotal(totalReviews)
   }
+  if (good != 0 || neutral != 0 || bad != 0) {
+    return (
+      <div>
+          <GeneralInformation goodReview={goodReview} neutralReview={neutralReview} badReview={badReview} />
+          <p>Good: {good}</p>
+          <p>Neutral: {neutral}</p>
+          <p>Bad: {bad}</p>
+          <p>All: {total}</p>
+          <Statistics good={good} neutral={neutral} bad={bad} total={total}/>
+      </div>
+    )
+  }
+  else {
+    return (
+      <div>
+          <GeneralInformation goodReview={goodReview} neutralReview={neutralReview} badReview={badReview} />
+        <p>No feedback given</p>
+      </div>
+    )
+  }
 
-
-
-  return (
-    <div>
-    <h1>Give a feedback</h1>
-      <Button onClick={goodReview} text="Good"/>
-      <Button onClick={neutralReview} text="Neutral"/>
-      <Button onClick={badReview} text="Bad"/>
-      <h2>Statistics</h2>
-      <p>Good: {good}</p>
-      <p>Neutral: {neutral}</p>
-      <p>Bad: {bad}</p>
-      <p>All: {total}</p>
-      <Statistics good={good} neutral={neutral} bad={bad} total={total}/>
-    </div>
-  )
 }
 
 export default App
