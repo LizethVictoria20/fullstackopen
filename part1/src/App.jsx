@@ -5,17 +5,22 @@ import Button from './components/Button'
 const App = () => {
   const [left, setLeft] = useState(0)
   const [right, setRight] = useState(0)
+  const [total, setTotal] = useState(0)
 
   const [allClicks, setAll] = useState([])
 
   const handleLeftClick = () => {
     setAll(allClicks.concat('L'))
-    setLeft(left + 1)
+    const updateLeft = left + 1
+    setLeft(updateLeft)
+    setTotal(updateLeft + right)
   }
 
   const handleRightClick = () => {
-    setRight(right + 1)
     setAll(allClicks.concat('R'))
+    const updateRight = right + 1
+    setRight(updateRight)
+    setTotal(left + updateRight)
   }
   return (
     <div>
@@ -24,6 +29,7 @@ const App = () => {
       <button onClick={handleRightClick}>right</button>
       {right}
       <p>{allClicks.join(', ')}</p>
+      <p>Total: {total}</p>
     </div>
   )
 }
