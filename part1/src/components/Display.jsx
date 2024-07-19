@@ -1,9 +1,3 @@
-function Display(props) {
-    return(
-        <>
-            <p>Counter: {props.counter}</p>
-        </>
-    )
-}
-
+const Display = ({ counter }) => <p>Counter: {counter}</p>
+    
 export default Display;
