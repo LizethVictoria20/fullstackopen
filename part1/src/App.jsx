@@ -14,11 +14,33 @@ const Statistics = ({ good, neutral, bad, total }) => {
   const positive = (100 * good) / total;
   return (
     <>
-      <StatisticsLine text="Good" value={good} />
-      <StatisticsLine text="Neutral" value={neutral} />
-      <StatisticsLine text="Bad" value={bad} />
-      <StatisticsLine text="Average" value={average} />
-      <StatisticsLine text="Positive" value={`${positive}%`} />
+    <table>
+      <tr>
+        <td>
+        <StatisticsLine text="Good" value={good} />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <StatisticsLine text="Neutral" value={neutral} />
+        </td>
+      </tr>
+      <td>
+        <tr>
+          <StatisticsLine text="Bad" value={bad} />
+        </tr>
+      </td>
+      <tr>
+        <td>
+          <StatisticsLine text="Average" value={average.toFixed(2)} />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <StatisticsLine text="Positive" value={`${positive.toFixed(2)}%`} />
+        </td>
+      </tr>
+    </table>
     </>
   );
 };
